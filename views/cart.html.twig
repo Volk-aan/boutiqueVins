@@ -1,0 +1,46 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}Panier{% endblock %}
+
+{% block content %}
+<div id="panier">
+{# Déclaration de la variable total pour calculer le prix total du panier #}
+{% set total = 0 %}
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12" id="cart-title">Panier</div>
+        </div>
+        <div class="row" id="cart-header">
+            <div id="cart-qt" class="col-xs-3">Quantité</div>
+            <div id="cart-prod" class="col-xs-6">Produit</div>
+            <div id="cart-price" class="col-xs-3">Prix</div>
+        </div>
+        {% for produit in produits %}
+            <div class="row">
+                <div class="col-xs-3 prod-qte">
+                    <a href="{{ path('augmenter', { 'id' : produit.product.id}) }}">
+                        <span class="glyphicon glyphicon-plus btn btn-success click-add" data-id='{{ produit.product.id }}' data-qt='{{ produit.quantity }}'></span>
+                    </a>
+                        {{ produit.quantity }}
+                    <a href="{{ path('diminuer', { 'id' : produit.product.id}) }}">
+                        <span class="glyphicon glyphicon-minus btn btn-danger"></span>
+                    </a>
+                    </div>
+                <div class="col-xs-6 prod-name">{{ produit.product.name }}</div>
+                <div class="col-xs-3 prod-price"><h4>{{ (produit.product.price * produit.quantity)|number_format(2, '.', ',') }} €</h4><h6>( {{ produit.product.price|number_format(2, '.', ',') }} € )</h6></div>
+                {% set total = total + (produit.product.price * produit.quantity) %}
+            </div>
+        {% endfor %}
+        <div class="container">
+    <div class="row">
+        <div class="col-md-8"></div>
+        <div class="col-md-4">Total: {{ total|number_format(2, '.', ',') }} €</div>
+    </div>
+        <div class="row">
+        <div class="col-md-8"><a href="{{ path('vider') }}">Vider le panier</a></div>
+        <div class="col-md-4"><a href="{{ path('commander') }}" id="btn-com">Commander</a></div>
+    </div>
+</div>
+    </div>
+</div>
+{% endblock %}

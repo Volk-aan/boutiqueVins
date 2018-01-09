@@ -1,0 +1,154 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}Mon compte{% endblock %}
+
+{% block content %}
+
+
+
+<div>
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist" id="tab-compte">
+    <li role="presentation" class="active"><a href="#mesCoordonnees" aria-controls="home" role="tab" data-toggle="tab">Profil</a></li>
+    <li role="presentation"><a href="#mesCommandes" aria-controls="profile" role="tab" data-toggle="tab">Mes commandes</a></li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="mesCoordonnees">
+  <div class="container">
+    <div class="row">
+      <div id="coord-title">Mes coordonnées</div>
+    </div>
+    <div id="coord-content">
+      <div class="row">
+          <div class="col-sm-6">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  Nom
+                </div>
+                <div class="panel-body">
+                  {{client.lastname}} {{client.firstname }}
+                </div>
+              </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                  Numéro de client
+                </div>
+                <div class="panel-body">
+                  {{client.id }}
+                </div>
+              </div>
+          </div>
+      </div>
+
+      <div class="row">
+          <div class="col-sm-6">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  Téléphone <span class="glyphicon glyphicon-pencil btn-edit-tel"></span>
+                </div>
+                  <div class="edit-tel">
+                  <form>
+                      <div class="form-group">
+                      <label for="newTel">Votre nouveau n° de téléphone:<br/>Pas de caractère spéciaux.</label>
+                      <input type="text" class="form-control" id="newTel" placeholder="000000000">
+                      <button type="submit"><span class="glyphicon glyphicon-ok btn-send-edit-tel"> Confirmer</span></button>
+                    </div>
+                  </form>
+                </div>
+                <div class="panel-body">
+                  {{client.phoneNumber}}
+                </div>
+              </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                  Adresse email <span class="glyphicon glyphicon-pencil btn-edit-email"></span>
+                </div>
+                <div class="edit-email">
+                  <form>
+                      <div class="form-group">
+                      <label for="newEmail">Votre nouvelle adresse email:</label>
+                      <input type="email" class="form-control" id="newEmail" placeholder="name@example.com">
+                      <button type="submit"><span class="glyphicon glyphicon-ok btn-send-edit-email"> Confirmer</span></button>
+                    </div>
+                  </form>
+                </div>
+                <div class="panel-body">
+                  <div class="email-updt">{{ client.email }}</div>
+                </div>
+              </div>
+          </div>
+      </div>
+
+      <div class="row">
+          <div class="col-sm-6">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  Adresse  <span class="glyphicon glyphicon-pencil"></span>
+                </div>
+                <div class="panel-body">
+                  {{client.street}} <br/>
+                  {{client.postalcode}}
+                  {{client.city}}
+                </div>
+              </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                  Mot de passe  <span class="glyphicon glyphicon-pencil"></span>
+                </div>
+                <div class="panel-body">
+                  *******
+                </div>
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="mesCommandes">
+    <div class="container">
+      <div class="row">
+        <div id="cmd-title">Mes commandes</div>
+      </div>
+        <div class="row" id="cmd-header">
+            <div class="col-xs-4">Date</div>
+            <div class="col-xs-2">N°</div>
+            <div class="col-xs-3">Total</div>
+            <div class="col-xs-3">Facture</div>
+        </div>
+    </div>
+    <div class="container">
+    <table classe="table-responsive">
+    {% for commande in commandes %}
+        <div class="row">
+            <div class="col-xs-4" id="cmd-date">{{ commande.date|date("d/m/Y") }}</div>
+            <div class="col-xs-2" id="cmd-num">{{ commande.id }}</div>
+            <div class="col-xs-3" id="cmd-total">{{ commande.price }} €</div>
+            <div class="col-xs-3 cmd-fact" data-id='{{ commande.id }}'><a href="{{ path('pdf', {'numCom' :commande.id }) }}" ><span class="glyphicon glyphicon-print view-invoice"></span></a></div>
+        </div>
+        {% endfor %}
+    </div>
+    </table>
+  </div>  
+    
+    
+    
+    </div>
+    <div role="tabpanel" class="tab-pane" id="messages">...</div>
+    <div role="tabpanel" class="tab-pane" id="settings">...</div>
+  </div>
+
+</div>
+
+  
+
+
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}Foire aux questions{% endblock %}
+
+{% block content %}
+    <div class="container textstyle">
+        {{ faq.content | raw }}
+    </div>
+{% endblock %}

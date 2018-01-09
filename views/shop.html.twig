@@ -1,0 +1,45 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}Boutique{% endblock %}
+
+{% block content %}
+		<div class="view">
+			<div class="bp-header cf">
+				<h1>Boutique</h1>
+				<nav>
+          <div class="col-md-3"><button class="tri" id="triRouge">Vins rouges</button></div>
+          <div class="col-md-3"><button class="tri" id="triBlanc">Vins blancs</button></div>
+          <div class="col-md-3"><button class="tri" id="triRose">Vins rosés</button></div>
+          <div class="col-md-3"><button class="tri" id="sansTri">Toutes</button></div>
+				</nav>
+      </div>
+
+      <!-- Product grid -->
+      <div class="container">
+      {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
+        <div class="alert alert-danger" role="alert">Veuillez vous connecter pour ajouter au panier.</div>
+      {% endif %}
+      <ul id="liste-prod">
+            {% for produit in produits %}
+            <li>
+              <div class="col-md-3 col-sm-12 {{produit.color.name}}">
+                <div class="product">
+                <div class="product__info ">
+                  <img class="product__image" src="{{ asset('images/upload/'~produit.picture) }}" height="250px" alt="{{produit.name}}" />
+                  <h3 class="product__title">{{ produit.name }}</h3>
+                  <span class="product__year extra highlight"><div class="glyphicon glyphicon-flag"></div>  {{ produit.land.name }} </span>
+                  <span class="product__price highlight"><div class="glyphicon glyphicon-tint"></div> {{ produit.color.name}} </span>
+                  <span class="product__price highlight price"><div class="glyphicon glyphicon-eur"></div>  {{ produit.price}} </span>
+                  {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                  <a href="{{ path('ajouter', { 'id' : produit.id }) }}" class="action action--button action--buy addPanier" <i class="fa fa-shopping-cart"></i><div class="glyphicon glyphicon-shopping-cart"></div></a>
+                  {% endif %}
+                </div>
+                <a href="{{ path('details', { 'id' : produit.id }) }}"><label class="action action--compare-add"><i class="fa fa-plus"><div class="glyphicon glyphicon-info-sign"></div></i><i class="fa fa-check"></i><span class="action__text action__text--invisible">Détails</span></label></a>
+              </div>
+              </div>
+            </li>
+        {% endfor %}
+        </ul>
+    </div>
+    </div>
+{% endblock %}

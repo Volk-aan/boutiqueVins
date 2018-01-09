@@ -1,0 +1,121 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="{{ asset('/lib/bootstrap-3.3.7-dist/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/demo.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/component.css') }}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
+    <title>Citadelle du Vin - {% block title %}{% endblock %}</title>
+</head>
+<body>
+          <div class="container-fluid">
+              <!--  Navigation Bar -->
+    
+              <nav class="navbar navbar-default navbar-fixed-top noBorder" role="navigation">
+                  <div class="container">
+
+                      <div class="navbar-header">
+                          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                              <span class="sr-only">Toggle navigation</span>
+                              <span class="icon-bar"></span>
+                              <span class="icon-bar"></span>
+                              <span class="icon-bar"></span>
+                          </button>
+                          <a class="navbar-brand brandStyle" href="{{ path('home') }}">Citadelle du Vin</a>
+                      </div>
+                      <div class="collapse navbar-collapse noPadding"	id="myNavbar">
+                          <div class="navbar-right menustyle">
+                              <ul class="nav navbar-nav">
+                                  <li><a href="{{ path('home') }}"><p><div class="glyphicon glyphicon-home"></div>ACCUEIL</p></a></li>
+                                  <li><a href="{{ path('shop') }}"><p><div class="glyphicon glyphicon-gift"></div>BOUTIQUE</p></a></li>
+                                    <li>
+                                        <a href="#" data-toggle="dropdown"><p><div class="glyphicon glyphicon-user"></div>COMPTE</span></p></a>				
+                                        <ul class="dropdown-menu" role="menu">
+                                            
+                                            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                                                <li><a href="{{ path('compte') }}">MON PROFIL</a></li>
+                                            {% else %}
+                                                <li><a href="{{ path('login') }}">CONNEXION</a></li>
+                                            {% endif %}
+                                                <li class="divider"></li>                                        
+                                            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                                                <li><a href="{{ path('logout') }}">DECONNEXION</a></li>
+                                            {% else %}
+                                                <li><a href="{{ path('admin_user_add')}} ">NOUVEAU</a></li>
+                                            {% endif %}
+                                        </ul>                
+                                    </li>
+                                  {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                                    <li><a href="{{ path('panier') }}"><p><div class="glyphicon glyphicon-shopping-cart"></div>PANIER ({{ app.session.get('panier') }})</p></a></li>
+                                    {% else %}
+                                    <li><a><p><div class="glyphicon glyphicon-shopping-cart"></div>PANIER</p></a></li>
+                                  {% endif %}
+                                  
+                                  <li><a href="{{ path('contact') }}"><p><div class="glyphicon glyphicon-envelope"></div>CONTACT</p></a></li>
+                                  {% if app.user and is_granted('ROLE_ADMIN') %}
+                                    <li><a href="{{ path('administration') }}"><p><div class="glyphicon glyphicon-cog"></div>ADMINISTRATION</p></a></li>
+                                  {% endif %}
+                              </ul>
+                          </div>
+                      </div>
+
+                  </div>
+              </nav>
+            </div>
+          <!-- Page's content -->
+
+        <div id="content">{% block content %}{% endblock %}</div>
+      
+          <footer id="myFooter">
+              <div class="container">
+                  <div class="row">
+                      <div class="col-sm-3">
+                          <h2 class="logo"><a href="#"> CITADELLE DU VIN </a></h2>
+                      </div>
+                      <div class="col-sm-2">
+                          <h5>Pour commencer</h5>
+                          <ul>
+                              <li><a href="{{ path('home') }}">Accueil</a></li>
+                              <li><a href="#">Créer un compte</a></li>
+                              <li><a href="{{ path('connexion') }}">Connexion</a></li>
+                          </ul>
+                      </div>
+                      <div class="col-sm-2">
+                          <h5>A propos de nous</h5>
+                          <ul>
+                              <li><a href="{{ path('infoGenerales') }}">Informations générales</a></li>
+                              <li><a href="{{ path('contact') }}">Nous contacter</a></li>   
+                          </ul>
+                      </div>
+                      <div class="col-sm-2">
+                          <h5>Support</h5>
+                          <ul>
+                              <li><a href="{{ path('faq') }}">FAQ</a></li>
+                              <li><a href="#"></a></li>
+                          </ul>
+                      </div>
+                      <div class="col-sm-3">
+                          <button type="button" class="btn btn-default" ><a href="{{ path('contact') }}">Nous contacter</a></button>
+                      </div>
+                  </div>
+              </div>
+              <div class="footer-copyright">
+                  <p>© 2017 Citadelle du vin </p>
+              </div>
+          </footer>
+    </div>
+    
+    
+    <script src="{{ asset('lib/jquery-3.2.1/jquery-3.2.1.js') }}" ></script>
+    <script src="{{ asset('lib/bootstrap-3.3.7-dist/js/bootstrap.js') }}"</script>
+    <script src="{{ asset('js/modernizr.custom.js') }}"></script>
+    <script src="{{ asset('lib/jspkg-archive/jquery.dynatable.js') }}"></script>
+    <script src="{{ asset('js/myscript.js') }}"></script>
+
+
+</body>
+</html>

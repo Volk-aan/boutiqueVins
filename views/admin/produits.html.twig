@@ -1,0 +1,117 @@
+{% extends "admin/layout.html.twig" %}
+
+{% block title %}Gestion produits{% endblock %}
+
+{% block content %}
+<section id="admin-produits">
+    <div class="container">
+        <div id="row">
+            <button type="button" class="btn btn-default navbar-btn" data-toggle="modal" data-target="#nouveauProduit">Nouveau produit</button>
+        </div>
+        {% for produit in produits %}
+        <div id="admin-prod">
+            <div class="row">
+                <div class="col-xs-12 admin-prod-name">{{ produit.name }} {% if produit.bio == 1 %} BIO {% endif %}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 admin-prod-image"><img class="product__image" src="{{ asset('images/upload/'~produit.picture) }}" height="250px" alt="{{ produit.name }}" /></div>
+                <div class="col-md-6 admin-prod-description"><span class="admin-prod-title">Description: </span>  {{ produit.description }}</div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3 admin-prod-price"> <span class="admin-prod-title">Prix: </span> {{ produit.price }} €</div>
+                <div class="col-sm-3 admin-prod-color"> <span class="admin-prod-title">Couleur: </span> {{ produit.color.name }} </div>
+                <div class="col-sm-3 admin-prod-land"> <span class="admin-prod-title">Pays: </span> {{ produit.land.name }} </div>
+                <div class="col-sm-3 admin-prod-taste"> <span class="admin-prod-title">Goût: </span> {{ produit.taste.name }} </div>
+            </div>
+            <div class="row">   
+                <div class="col-sm-3 admin-prod-alcool"> <span class="admin-prod-title">Alcool: </span>  {{ produit.alcool }} %</div>
+                <div class="col-sm-3 admin-prod-temperature"><span class="admin-prod-title">T° de service: </span>  {{ produit.temperature }} °</div>
+                <div class="col-sm-3 admin-prod-stock"><span class="admin-prod-title">Stock: </span>  {{ produit.stock }} </div>
+                <div class="col-sm-3 admin-prod-delete"><button type="button" class="btn btn-danger navbar-btn"><a href="{{ path ('product-delete', { 'id' : produit.id}) }}">Supprimer</a></button></div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+ {#
+    MODAL POUR NOUVEAU PRODUIT
+ #}
+ 
+        <!-- Modal -->
+        <div class="modal fade" id="nouveauProduit" tabindex="-1" role="dialog" aria-labelledby="nouveauProduit">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Nouveau produit</h4>
+            </div>
+            <div class="modal-body">
+            {% if produitForm %}
+                {{ form_start(produitForm) }}
+                    <div class="form-group">
+                    <label>Nom:</label> {{ form_widget(produitForm.name,  { 'attr':  {
+                            'class': 'form-control',
+                            'placeholder': ''
+                        }})}}<br/>
+                    <label>Description </label>
+                        {{ form_widget(produitForm.description, { 'attr':  {
+                            'rows': '4',
+                            'class': 'form-control',
+                            'placeholder': ''
+                        }}) }}
+                    <label>Millésime:</label> {{ form_widget(produitForm.year,  { 'attr':  {
+                            'class': 'form-control',
+                            'placeholder': ''
+                        }})}}<br/>
+                    <label>Couleur:</label> {{ form_widget(produitForm.color,  { 'attr':  {
+                            'class': 'form-control'
+                        }})}}<br/>
+                    <label>Pays:</label> {{ form_widget(produitForm.land,  { 'attr':  {
+                            'class': 'form-control'
+                        }})}}<br/>
+                    <label>Goût:</label> {{ form_widget(produitForm.taste,  { 'attr':  {
+                            'class': 'form-control'
+                        }})}}<br/>
+                    <label>Alcool:</label> {{ form_widget(produitForm.alcool,  { 'attr':  {
+                            'class': 'form-control',
+                            'placeholder': ''
+                        }})}}<br/>
+                    <label>Temperature:</label> {{ form_widget(produitForm.temperature,  { 'attr':  {
+                            'class': 'form-control',
+                            'placeholder': ''
+                        }})}}<br/>
+                    <label>Stock:</label> {{ form_widget(produitForm.stock,  { 'attr':  {
+                            'rows': '1',
+                            'class': 'form-control',
+                            'placeholder': ''
+                        }})}}<br/>
+                    <label>Prix:</label> {{ form_widget(produitForm.price,  { 'attr':  {
+                            'rows': '1',
+                            'class': 'form-control',
+                            'placeholder': ''
+                        }})}}<br/>
+                    <label>Bio:</label> {{ form_widget(produitForm.bio,  { 'attr':  {
+                            'class': 'form-control',
+                            'placeholder': '',
+                            'required' : false
+                        }})}}<br/>
+                    <label>Image:</label> {{ form_widget(produitForm.picture,  { 'attr':  {
+                            'accept' : 'image/*',
+                            'class': 'form-control',
+                            'placeholder': '',
+                            'required' : false
+                        }})}}<br/>
+
+                        
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-primary" value="Ajouter" />
+                    </div>
+            {% endif %}
+            </div>
+            </div>
+        </div>
+        </div>
+
+{% endblock %}

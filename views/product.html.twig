@@ -1,0 +1,43 @@
+{% extends "layout.html.twig" %}
+
+{% block title %} {{ product.name }} {% endblock %}
+
+{% block content %}
+<div class="container" id="product-page">
+    <div class="row">
+        <div class="col-xs-12 col-md-7" id="product-name">{{ product.name }}</div>
+        <div class="col-xs-12 col-md-5">
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                <a href="{{ path('ajouter', { 'id' : product.id }) }}" class="action action--button action--buy addPanier" <i class="fa fa-shopping-cart"></i><div class="glyphicon glyphicon-shopping-cart"></div></a>
+            {% endif %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6"><img class="product__image" src="{{ asset('images/upload/'~product.picture) }}" height="250px" alt="{{ product.name }}" /></div>
+        <div class="col-md-6" id="product-details">
+            <div class="row">
+                <div class="col-xs-12"><h4>Couleur:</h4> {{ product.color.name }}</div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12"><h4>Pays: </h4>{{ product.land.name }}</div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12"><h4>Degré d'alcool </h4>{{ product.alcool }} °</div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12"><h4>Millésime: </h4>{{ product.year }}</div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12"><h4>Température de service: </h4>{{ product.temperature }}</div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12"><h4>Bio: </h4>{% if(product.bio>0) %} Oui {% else %} Non {% endif %}</div>
+            </div>
+        </div>
+    </div>
+    <div class="row" id="product-price-description">
+        <div class="col-md-6" id="product-price">{{ product.price }} €</div>
+        <div class="col-md-6">{{ product.description }}</div>
+    </div>
+</div>
+{% endblock %}

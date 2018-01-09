@@ -1,0 +1,33 @@
+{% extends "admin/layout.html.twig" %}
+
+{% block title %}Gestion commandes{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <p>
+        <h2>Commandes</h2>
+        <table id="tableCommandes" class="table">
+            <thead>
+            <tr>
+            <th>Numéro</th>
+            <th>Date</th>
+            <th>N° client</th>
+            <th>Prix total</th>
+            <th>Détails</th>
+            </tr>
+        </thead><tbody>
+        {% for commande in commandes %}  
+            <tr>
+            <td>{{ commande.id }}</td>
+            <td>{{ commande.date }}</td>
+            <td>{{ commande.user }}</td>
+            <td>{{ commande.price }} €</td>
+            <td><a href="{{ path('pdf', {'numCom' :commande.id }) }}" ><span class="glyphicon glyphicon-print view-invoice"></span></a></td>
+            </tr> 
+        {% endfor %}
+        </tbody>
+        </table>
+    </p>
+</div>
+{% endblock %}

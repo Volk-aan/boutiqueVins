@@ -1,0 +1,38 @@
+{% extends "admin/layout.html.twig" %}
+
+{% block title %}Gestion commandes{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <p>
+        <h2>Clients</h2>
+        <table id="tableClients" class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Firstname</th>
+                    <th>Rue</th>
+                    <th>Code Postal</th>
+                    <th>Localité</th>
+                    <th>Téléphone</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+        <tbody>
+        {% for user in users %}  
+            <tr>
+                <td>{{ user.lastname }}</td>
+                <td>{{ user.firstname }}</td>
+                <td>{{ user.street }}</td>
+                <td>{{ user.postalcode }}</td>
+                <td>{{ user.city }}</td>
+                <td>{{ user.phonenumber }}</td>
+                <td>{{ user.email }}</td>
+            </tr> 
+        {% endfor %}
+        </tbody>
+        </table>
+    </p>
+</div>
+{% endblock %}

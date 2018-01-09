@@ -1,0 +1,543 @@
+
+/*-------------------------
+	General Styles
+--------------------------*/
+
+
+a{
+    color :#000;
+}
+
+li{
+    list-style: none;
+}
+/*-----------------------------------
+	PAGE'S CONTENT
+------------------------------------*/
+#content{
+    margin-top:70px;
+}
+
+/*-----------------------------------
+	Navigation Bar Styles
+------------------------------------*/
+
+.navbar{
+    background-color: #3c3d41;
+    transition:padding 0.4s;
+}
+
+
+/* Contract the navbar while scrolling */
+
+.navbar.scrolled{
+    box-shadow: 0 3px 3px rgba(0,0,0,0.1);
+}
+
+#myNavbar{
+    padding: 0px;
+    overflow-x: hidden;
+}
+
+#myNavbar ul li a{
+    padding-right:10px;
+    font-size:125%;
+}
+
+#myNavbar ul li div{
+    margin-right:5px;
+}
+/* Brand name */
+
+.brandStyle{
+    padding-top:25px;
+    /*color: #487b83 !important; */
+    color: white;
+    font-family: 'Comfortaa', cursive !important;
+    font-size: 200%;
+}
+
+/* Menu */
+
+.menustyle{
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+
+/*-----------------------------------
+	Main Picture
+------------------------------------*/
+
+.headpicture{
+    background:url(../images/header.jpg);
+    background-size:cover;
+    background-repeat:no-repeat;
+    width: 100%;
+    height: 600px;
+}
+
+
+/*-----------------------------------
+		Text
+------------------------------------*/
+
+/* Titles */
+
+h1{
+    color: #5a5b5b;
+    font-size:24px;
+    font-weight: bold;
+    margin-top: 150px;
+    font-family : Cabin, sans-serif;
+}
+
+/* Paragraphs */
+
+.textStyle{
+    color: #989999;
+    font-size: 18px;
+    text-align: justify;
+    line-height: 1.5;
+    max-width: 700px;
+    margin: 80px auto 0 auto;
+}
+
+.textStyle a{
+    text-decoration:underline;
+}
+
+.textStyle a:hover{
+    text-decoration: none;
+}
+
+
+/*-----------------------------------
+	Latest Projects
+------------------------------------*/
+
+/* Container */
+
+.latestProjects{
+    max-width: 900px;
+    margin : 80px auto 0 auto;
+}
+
+.latestProjects p{
+    font-size: 16px;
+    color: #757879;
+    width: 260px;
+    text-align: left;
+    margin: 13px auto 60px auto;
+}
+
+.latestProjects p a{
+    font-size: 12px;
+    display: block;
+    width: 80px;
+    white-space: nowrap;
+    margin-top: 6px;
+}
+
+.latestProjects img{
+    width:260px;
+}
+
+
+/*-----------------------------------
+		Footer
+------------------------------------*/
+
+.footer{
+    padding: 13px 0px 0px 0px;
+    border-top: 1px solid #e5e5e5;
+    color: #757879;
+    font-size: 12px;
+    margin:70px auto;
+}
+
+/* Social buttons */
+
+.socialButtons img{
+    width:36px;
+    opacity:0.6;
+}
+
+.socialButtons a{
+    display:inline-block;
+}
+
+.socialButtons a:hover img{
+    opacity:0.8;
+}
+
+#footerLogoText{
+    line-height:30px;
+}
+
+
+
+/*-----------------------------------
+	Helper classes
+------------------------------------*/
+
+.noPadding{
+    padding:0;
+}
+
+.noBorder{
+    border: 0;
+}
+
+
+/*-----------------------------------
+	Media querries
+------------------------------------*/
+
+/* On smaller screens */
+
+@media (max-width: 992px) {
+
+    /* General */
+
+    body{
+        padding-top: 76px;
+    }
+
+    li{
+        padding-left:8px;
+    }
+
+    h1 {
+        margin-top: 80px;
+    }
+
+    /* Navigation bar */
+
+    .navbar{
+        padding: 16px 0;
+    }
+
+    /* Main picture */
+
+    .headpicture{
+        height: 250px;
+    }
+
+    /* Latest Projects */
+
+    .textStyle{
+        margin-top: 40px;
+    }
+
+    .titleStyle{
+        margin-top: 70px;
+    }
+
+}
+
+/* On bigger screens */
+
+@media (min-width: 993px) {
+
+    /* Sharing buttons */
+
+    .responsiveAlign {
+        float: right;
+    }
+}
+
+
+
+/* FOOTER */
+#myFooter {
+    background-color: #3c3d41;
+    color: white;
+    padding-top: 30px;
+}
+
+#myFooter .footer-copyright {
+    background-color: #333333;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    text-align: center;
+}
+
+#myFooter .row {
+    margin-bottom: 60px;
+}
+
+#myFooter .navbar-brand { 
+    margin-top: 45px;
+    height: 65px;
+}
+
+
+#myFooter .footer-copyright p {
+    margin: 10px;
+    color: #ccc;
+}
+
+#myFooter ul {
+    list-style-type: none;
+    padding-left: 0;
+    line-height: 1.7;
+}
+
+#myFooter h5 {
+    font-size: 18px;
+    color: white;
+    font-weight: bold;
+    margin-top: 30px;
+}
+
+#myFooter h2 a{
+    font-size: 50px;
+    text-align: center;
+    color: #fff;
+}
+
+#myFooter a {
+    color: #d2d1d1;
+    text-decoration: none;
+}
+
+#myFooter a:hover,
+#myFooter a:focus {
+    text-decoration: none;
+    color: white;
+}
+
+#myFooter .btn {
+    color: white;
+    background-color: #d84b6b;
+    border-radius: 20px;
+    border: none;
+    width: 150px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 10px;
+    line-height: 25px;
+}
+
+@media screen and (max-width: 767px) {
+    #myFooter {
+        text-align: center;
+    }
+}
+
+#myFooter{
+    flex: 0 0 auto;
+    -webkit-flex: 0 0 auto;
+}
+
+
+/* CONTACT */
+
+#contact{
+    padding: top 50px;;
+	color:#757879;
+	padding-bottom:80px;
+}
+
+textarea.form-control{
+    height:100px;
+}
+
+/* CONNEXION */
+#form-login{
+    background-color: #3c3d41;
+    padding: 100px 25px 125px 25px;
+    margin: 25px;
+}
+
+#form-login .btn{
+    background-color: #3c3d41;
+    border-color: white;
+}
+#form-login .btn:hover{
+    border-color: lightgrey;
+}
+
+/* */
+
+.tri{
+    width:125px;
+    background-color: #3c3d41;
+    color: white;
+    border-radius:5px;
+    border:1px solid black;
+    line-height: 25px;
+}
+.tri a{
+    font-weight: bold;
+    text-decoration: none;
+    border:none;
+}
+
+/* PANIER */
+#panier{
+    margin-top:100px;
+    margin-bottom:75px;
+    text-align:center;
+    line-height:25px;
+}
+#panier #cart-title{
+    font-family: 'Comfortaa', cursive !important;
+    font-size:250%;
+    background-color: #d84b6b;
+    line-height: 75px;
+}
+#panier #cart-header{
+    font-family: 'Comfortaa', cursive !important;
+    font-size:125%;
+    background-color: #d84b6b;
+    line-height: 75px;
+    margin-bottom: 25px;
+}
+
+#panier .prod-qte{
+    font-size:250%;
+    padding: 15px;  
+}
+#panier .prod-qte span{
+    font-size: 10px;
+}
+#panier .prod-name{
+    border-bottom: 1px solid rgba(0,0,0,0.25);
+    padding: 15px;
+}
+#panier .prod-price{
+padding-bottom: 15px;
+}
+
+#btn-com{
+    color: white;
+    background-color: #d84b6b;
+    border-radius: 20px;
+    border: none;
+    width: 150px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 10px;
+    line-height: 50px;
+}
+#btn a:hover{
+    color:lightgrey;    
+    text-decoration: none;
+}
+
+
+/* Mes commandes */
+
+#mesCommandes{
+    margin-top:100px;
+    margin-bottom:75px;
+    text-align:center;
+    line-height:25px;
+}
+
+#mesCommandes #cmd-title{
+    font-family: 'Comfortaa', cursive !important;
+    font-size:250%;
+    background-color: #d84b6b;
+    line-height: 75px;
+}
+
+#mesCommandes #cmd-header{
+    font-family: 'Comfortaa', cursive !important;
+    font-size:100%;
+    background-color: #d84b6b;
+    line-height: 75px;
+    margin-bottom: 25px;
+}
+
+/* Détails produit */
+
+#product-page{
+    margin-top:125px;
+    margin-bottom:50px;
+}
+
+#product-page #product-name{
+    font-size:125%;
+    text-align:center;
+}
+
+#product-page #product-details{
+    margin-top:25px;
+}
+
+#product-page #product-details h4{
+    font-weight: bold;
+    color:grey;
+}
+
+#product-page #product-price-description{
+    margin-top:30px;
+}
+
+#product-page #product-price-description #product-price{
+    font-weight: bold;
+    font-size:150%;
+    text-align:center;
+    color:#d84b6b;
+    line-height:100px;
+}
+
+/* Mes coordonnées */
+
+#mesCoordonnees{
+    margin-top:100px;
+    margin-bottom:75px;
+    text-align:center;
+    line-height:25px;
+}
+
+#mesCoordonnees #coord-title{
+    font-family: 'Comfortaa', cursive !important;
+    font-size:250%;
+    background-color: #d84b6b;
+    line-height: 125px; 
+}
+#mesCoordonnees #coord-content {
+    margin-top:25px;
+}
+
+#mesCoordonnees #coord-content .panel{
+    border:0px;
+    background: none;
+    
+}
+
+#mesCoordonnees #coord-content .panel-heading{
+    background-color: #d84b6b;
+    border-bottom: 1px solid black;
+}
+
+#mesCoordonnees .edit-email button{
+    background: none;
+    border:none;
+}
+#mesCoordonnees button .btn-send-edit-email {
+    color: white;
+    background-color: #d84b6b;
+    border-radius: 20px;
+    border: none;
+    width: 150px;
+    display: block;
+    margin: 0 auto;
+    line-height: 40px;
+}
+
+/* User form */
+#userForm{
+    margin-top:50px;
+    margin-bottom:50px;
+    padding:25px;
+    background-color:#3c3d41;
+}
+#userForm .btn-confirm{
+    background-color: #d84b6b;
+}
